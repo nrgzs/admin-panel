@@ -11,3 +11,8 @@ export default function Home() {
     </>
   )
 }
+
+/* aws bucket
+awss3
+mimetypes
+*/ 
