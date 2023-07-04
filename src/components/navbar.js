@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import clipboard from '/public/img/clipboard.svg';
-import ecommerce from '/public/img/ecommerce.svg';
-import globe from '/public/img/globe.svg';
+import dashboard from '/public/img/dashboard.svg';
+import users from '/public/img/users.svg';
 import pricetag from '/public/img/price-tag.svg';
 import truck from '/public/img/truck.svg';
 import setting from '/public/img/setting.svg';
@@ -14,39 +14,39 @@ export default function Navbar() {
       <div>
         <ul className="flex flex-row lg:flex-col gap-3 p-2">
           <Link href={'/'}>
-            <li className="flex gap-2 hover:bg-slate-200 rounded p-2">
-              <Image src={ecommerce} width={40} height={40}></Image>
+            <li className="flex gap-2 justify-center items-center  hover:bg-slate-200 rounded p-2">
+              <Image src={dashboard} width={40} height={40}></Image>
               <h2 className="hidden lg:block">Home</h2>
             </li>
           </Link>
           <Link href={'/product'}>
-            <li className="flex gap-2 hover:bg-slate-200 rounded p-2">
+            <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
               <Image src={pricetag} width={40} height={40}></Image>
               <h2 className="hidden lg:block"> Product</h2>
             </li>
           </Link>
           <Link href={'/categories'}>
-            <li className="flex gap-2 hover:bg-slate-200 rounded p-2">
+            <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
               <Image src={clipboard} width={40} height={40}></Image>{' '}
               <h2 className="hidden lg:block">Categories</h2>
             </li>
           </Link>
           <Link href={'/orders'}>
-            <li className="flex gap-2 hover:bg-slate-200 rounded p-2">
+            <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
               <Image src={truck} width={40} height={40}></Image>
               <h2 className="hidden lg:block">Orders</h2>
             </li>
           </Link>
           <Link href={'/users'}>
-            <li className="flex gap-2 hover:bg-slate-200 rounded p-2">
-              <Image src={globe} width={40} height={40}></Image>
+            <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
+              <Image src={users} width={40} height={40}></Image>
               <h2 className="hidden lg:block">Users</h2>
             </li>
           </Link>
-          <Link href={'/admin'}>
-            <li className="flex gap-2 hover:bg-slate-200 rounded p-2">
+          <Link href={'/settings'}>
+            <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
               <Image src={setting} width={40} height={40}></Image>
-              <h2 className="hidden lg:block">admin settings</h2>
+              <h2 className="hidden lg:block">Settings</h2>
             </li>
           </Link>
         </ul>
