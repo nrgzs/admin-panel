@@ -1,27 +1,30 @@
-const adminModel = require('@/lib/mongodb/adminModel.js');
-const dbConnect = require('@/lib/mongodb/connect.js');
+const Admin = require('@/lib/models/adminModel.js');
 
+const mongoose = require('mongoose');
+/* const Admin = mongoose.model('Admin'); */
+const dbConnect = require('@/pages/api/utils/connect.js');
+/* const adminModelCache = require('@/pages/api/utils/adminModelCache.js');
+ */
 export default async function POST(req, res) {
-  await dbConnect()
+  await dbConnect();
+  /* const Admin = adminModelCache.Admin; */
+
   const body = req.body;
 
- /*  res.json(body); */
+  /*  res.json(body); */
 
-  const users = await adminModel.find({});
+  const users = await Admin.find({});
 
   try {
     res.json(users);
   } catch (error) {
-    console.log(error);;
+    console.log(error);
   }
+}
 
- 
-  };
+//create user and push it to the database
 
-  //create user and push it to the database
+// for hashinf the pasword await bcrypt.hash(body.password,10)
 
-  // for hashinf the pasword await bcrypt.hash(body.password,10)
-
-  // const {pasword,...result} = user
-  // return new Response(JSON.stringify(result))
-
+// const {pasword,...result} = user
+// return new Response(JSON.stringify(result))

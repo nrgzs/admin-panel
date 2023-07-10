@@ -44,20 +44,35 @@ export default clientPromise;
  */
 
 const mongoose = require('mongoose');
-const Admin = require('./adminModel.js');
+
+
+
+let connection = {};
 
 async function dbConnect() {
-  mongoose.connect('mongodb://127.0.0.1:27017/e-commerce', {
-    useNewUrlParser: true,
+  if (connection.isConnected) {
+    return;
+  }
 
-    useUnifiedTopology: true,
-  });
+  try {
+    const db = await mongoose.connect('mongodb://127.0.0.1:27017/e-commerce', {
+      useNewUrlParser: true,
 
-  const db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error: '));
-  db.once('open', function () {
-    console.log('Connected successfully');
-  });
+      useUnifiedTopology: true,
+    });
+
+    connection.isConnected = db.connections[0].readyState;
+    console.log('Connected to MongoDB');
+    return connection;
+  } catch (error) {
+    console.error('Failed to connect to MongoDB:', error);
+    throw error;
+  }
 }
-
 module.exports = dbConnect;
+
+/* const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', function () {
+  console.log('Connected successfully');
+}); */

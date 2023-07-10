@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
-import clientPromise from '@/lib/mongodb/connect';
+import { MongoDBAdapter } from '@auth/mongodb-adapter';
+import clientPromise from '@/pages/api/utils/connect';
 
 const handler = NextAuth({
   providers: [
@@ -17,26 +17,22 @@ const handler = NextAuth({
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-//const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
+        //const user = { id: 1, name: 'J Smith', email: 'jsmith@example.com' };
 
-const res = await fetch ('api/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json'
+        const res = await fetch('api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
 
-  },
-  body: JSON.stringify({
-    username:credentials?.username,
-    password:credentials?.password,
-  })
-})
-
-const user= await res.json()
-
+        const user = await res.json();
 
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
 
-          
           return user;
         } else {
           // If you return null or false then the credentials will be rejected
@@ -48,8 +44,8 @@ const user= await res.json()
       },
     }),
   ],
-  
-/*   adapter: MongoDBAdapter(clientPromise) */
+
+  /*   adapter: MongoDBAdapter(clientPromise) */
 });
 
 export { handler as GET, handler as POST };
