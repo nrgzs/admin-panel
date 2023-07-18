@@ -9,7 +9,7 @@ import setting from '/public/img/setting.svg';
 
 export default function Navbar() {
   return (
-    <div className="flex flex-col items-center  gap-2 bg-white text-black lg:w-fit border-r-2 border-gray-400  p-3 h-screen">
+    <div className="flex flex-col items-center  gap-2 bg-white text-black lg:w-fit lg:h-screen border-r-2 border-gray-400  p-3 ">
       <h2 className=" font-bold mb-4 text-center border-b-2  ">E-Commerce</h2>
       <div>
         <ul className="flex flex-row lg:flex-col gap-3 p-2">
