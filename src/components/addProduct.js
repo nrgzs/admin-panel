@@ -9,6 +9,10 @@ export default function AddProduct() {
   const brand = useRef();
   const stock = useRef();
   const img = useRef();
+
+function AddProduct(title, description, category, price, rating, brand, stock,img) {
+  return
+}
   return (
     <>
       <div className="flex flex-col justify-center items-center">
