@@ -2,7 +2,7 @@ import AddProduct from '@/components/addProduct';
 import AllProducts from '@/components/products';
 import { useRef } from 'react';
 
-export default function ProductPage() {
+const ProductPage:React.FC=()=> {
  
 
   return (
@@ -16,3 +16,5 @@ export default function ProductPage() {
     </>
   );
 }
+
+export default ProductPage

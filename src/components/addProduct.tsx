@@ -1,18 +1,19 @@
 import { useRef } from "react";
+import React from 'react';
 
-export default function AddProduct() {
-  const title = useRef();
-  const description = useRef();
-  const category = useRef();
-  const price = useRef();
-  const rating = useRef();
-  const brand = useRef();
-  const stock = useRef();
-  const img = useRef();
+const AddProduct:React.FC=() =>{
+  const title = useRef<HTMLInputElement>(null);
+  const description = useRef<HTMLInputElement>(null);
+  const category = useRef<HTMLInputElement>(null);
+  const price = useRef<HTMLInputElement>(null);
+  const rating = useRef<HTMLInputElement>(null);
+  const brand = useRef<HTMLInputElement>(null);
+  const stock = useRef<HTMLInputElement>(null);
+  const img = useRef<HTMLInputElement>(null);
 
-function AddProduct(title, description, category, price, rating, brand, stock,img) {
-  return
-}
+// function AddProduct(title, description, category, price, rating, brand, stock,img) {
+//   return
+// }
   return (
     <>
       <div className="flex flex-col justify-center items-center">
@@ -73,3 +74,5 @@ function AddProduct(title, description, category, price, rating, brand, stock,im
     </>
   );
 }
+
+export default AddProduct

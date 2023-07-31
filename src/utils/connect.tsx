@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 import { MongoClient } from 'mongodb';
 
-let connection = {};
-
-
+let connection: { isConnected?: any } = {};
 
 async function dbConnect() {
   if (connection.isConnected) {
@@ -13,7 +11,6 @@ async function dbConnect() {
   try {
     const db = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
-
       useUnifiedTopology: true,
     });
 

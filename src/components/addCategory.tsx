@@ -1,7 +1,9 @@
 import { useRef } from "react"
+import React from 'react';
 
-export default function(){
-    const categoryName = useRef()
+const AddCategory:React.FC=()=>{
+    const categoryName = useRef<HTMLInputElement>(null)
+
     return(
         <div className="flex flex-col justify-center items-center">
         <h2 className="font-bold">Add Category</h2>
@@ -18,3 +20,6 @@ export default function(){
             </div>
     )
 }
+
+
+export default AddCategory

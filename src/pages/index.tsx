@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const Home:React.FC=()=> {
   return (
     <>
       <div>
@@ -19,3 +19,5 @@ export default function Home() {
 awss3
 mimetypes
 */ 
+
+export default Home

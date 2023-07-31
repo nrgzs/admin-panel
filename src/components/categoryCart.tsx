@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import React from 'react';
 
-export default function CategoryCart({ category }) {
+interface CategoryCartProps {
+  category: string;
+}
+
+ const CategoryCart: React.FC<CategoryCartProps>=({ category })=> {
     category = 'category'
   return (
     <Link href={`categories/${category}`}>
@@ -10,3 +15,5 @@ export default function CategoryCart({ category }) {
     </Link>
   );
 }
+
+export default CategoryCart

@@ -3,13 +3,14 @@ import search from '../../public/img/search.svg';
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import React from 'react';
 
-export default function SearchBar() {
+const SearchBar:React.FC=()=>{
 //   const [toggle, settoggle] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
 
-  async function handleSearch(e) {
+  async function handleSearch(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
   return (
@@ -19,15 +20,15 @@ export default function SearchBar() {
           <div>
             <input
               value={searchQuery}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchQuery(e.target.value);
               }}
               type="text"
               placeholder="search..."
               className={
                 /* toggle
-                  ?  */'mt-4  h-8 bg-slate-100  rounded-full shadow-sm hover:shadow-md focus:shadow-xl  overflow-hidden outline-none p-1'
-                 /*  : 'hidden' */
+                  ?  */ 'mt-4  h-8 bg-slate-100  rounded-full shadow-sm hover:shadow-md focus:shadow-xl  overflow-hidden outline-none p-1'
+                /*  : 'hidden' */
               }
             />
           </div>
@@ -52,3 +53,5 @@ export default function SearchBar() {
     </>
   );
 }
+
+export default SearchBar

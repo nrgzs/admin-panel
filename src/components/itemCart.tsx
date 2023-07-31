@@ -1,13 +1,18 @@
 import Image from "next/image";
 import testimg from '../../public/img/price-tag.svg';
 import Link from "next/link";
+import React from 'react';
 
-export default function ItemCart ({itemID}){
+interface props {
+  itemID: number|string;
+}
+
+ const ItemCart:React.FC<props>=({itemID})=>{
     itemID = 'itemID'
     return (
       <Link href={`/${itemID}`}>
         <div className="flex gap-2 items-center border-2 border-slate-300 p-2 w-56">
-          <Image src={testimg} width={30} height={30}></Image>
+          <Image alt="item img" src={testimg} width={30} height={30}></Image>
           <div>
             <h2 className="font-bold">Title</h2>
 
@@ -23,3 +28,4 @@ export default function ItemCart ({itemID}){
       </Link>
     );
 }
+export default ItemCart

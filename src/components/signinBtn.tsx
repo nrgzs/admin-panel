@@ -1,8 +1,8 @@
-'use client';
+import React from 'react';
 
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-export default function SignComponent() {
+const SignComponent: React.FC = () => {
   const { data: session } = useSession();
   console.log('🚀 ~ file: loginvtn.js:4 ~ Component ~ session:', session);
 
@@ -22,4 +22,6 @@ export default function SignComponent() {
       <button onClick={() => signIn()}>Sign in</button>
     </>
   );
-}
+};
+
+export default SignComponent;

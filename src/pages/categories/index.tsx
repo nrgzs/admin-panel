@@ -2,7 +2,7 @@ import AddCategory from "@/components/addCategory";
 import AllCategories from "@/components/categories";
 import CategoryCart from "@/components/categoryCart";
 
-export default function CategoryPage (){
+const CategoryPage:React.FC=()=>{
     return(
         <div>
             <h2 className="font-bold text-2xl text-center">
@@ -15,3 +15,4 @@ export default function CategoryPage (){
         </div>
     )
 }
+export default CategoryPage
