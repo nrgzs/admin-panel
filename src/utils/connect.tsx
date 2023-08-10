@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-import { MongoClient } from 'mongodb';
 
 let connection: { isConnected?: any } = {};
 

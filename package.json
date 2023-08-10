@@ -9,33 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-     "@types/node": "20.4.8",
+    "@auth/mongodb-adapter": "^1.0.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "20.4.8",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.4.1",
+    "multiparty": "^4.2.3",
     "next": "13.4.13",
+    "next-auth": "^4.22.1",
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6",
-    "@auth/mongodb-adapter": "^1.0.0",
-    "@types/mongoose": "^5.11.97",
-    "axios": "^1.4.0",
-    "bcrypt": "^5.1.0",
-  
-
-    "mongodb": "^5.6.0",
-    "mongoose": "^7.4.1",
-    "multiparty": "^4.2.3",
- 
-    "next-auth": "^4.22.1"
-   
-
-  },
-  "devDependencies": {
-
+    "typescript": "5.1.6"
   }
 }
