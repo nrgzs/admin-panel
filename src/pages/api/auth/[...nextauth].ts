@@ -21,23 +21,30 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
+
+        // const res = await axios.post(
+        //   'http://localhost:3000/api/auth/login',
+        //   {
+        //     credentials,
+        //   },
+        //   {
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //   }
+        // );
+        // const user = res.data.result;
+        // console.log('🚀 ~ file: [...nextauth].ts:38 ~ authorize ~ user:', user);
+      const res = await fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(credentials),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const user = await res.json();
         
-
-        const res = await axios.post(
-          'http://localhost:3000/api/auth/login',
-          {
-            credentials,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        const user = res.data.result;
-        console.log('🚀 ~ file: [...nextauth].ts:42 ~ authorize ~ data:', user);
-
-        if (res.status == 200 && user) {
+        if (user) {
+          console.log("🚀 ~ file: [...nextauth].ts:46 ~ authorize ~ user:", user)
+          
           return user;
         } else {
           return null;
@@ -45,6 +52,9 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+  // pages:{
+  //   signIn:'/signin'
+  // }
 };
 
 export default NextAuth(options);
