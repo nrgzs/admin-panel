@@ -1,4 +1,4 @@
-// import * as bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 const mongoose = require('mongoose');
 
@@ -17,7 +17,7 @@ export default async function handler(
     const [user] = await Admin.find({ email: body.username });
     console.log('🚀 ~ file: index.js:19 ~ POST ~ user:', user);
 
-    if (user) {
+    if (user && (await bcrypt.compare(body.password, user.password))) {
       const userWithoutPass = Object.entries(user._doc).filter(
         (param) => param[0] != 'password'
       );
@@ -32,8 +32,4 @@ export default async function handler(
   }
 }
 
-// (await bcrypt.compare(body.password, user.password))
-//// const userWithoutPass = Object.entries(user._doc).filter(
-//   (param) => param[0] != 'password'
-// );
-// Object.fromEntries(userWithoutPass)
+
