@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
 import { NextApiRequest, NextApiResponse } from 'next';
 const mongoose = require('mongoose');
 
@@ -31,5 +31,3 @@ export default async function handler(
     res.status(500).json({ error: 'An error occurred' });
   }
 }
-
-

@@ -2,6 +2,18 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req:NextApiRequest, res:NextApiResponse) {
-  res.status(200).json({ name: 'John Doe' })
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+){ 
+  console.log('hello');
+  try {
+     res.json({ name: 'John Doe' });
+  } catch (error) {
+    res.json({ error: error});
+  }
+  
+ 
 }
+
