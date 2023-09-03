@@ -16,15 +16,17 @@ export default async function handler(
 
     const [user] = await Admin.find({ email: body.username });
     console.log('🚀 ~ file: index.js:19 ~ POST ~ user:', user);
+    const pass = await bcrypt.compare(body.password, user.password);
+    console.log('🚀 ~ file: login.ts:20 ~ pass:', pass);
 
-    if (user && (await bcrypt.compare(body.password, user.password))) {
+    if (user && pass) {
       const userWithoutPass = Object.entries(user._doc).filter(
         (param) => param[0] != 'password'
       );
 
       res.status(200).json(Object.fromEntries(userWithoutPass));
     } else {
-      res.json({ result: 'user not found' });
+      res.status(401).json(null);
     }
   } catch (error) {
     console.error('Error:', error);

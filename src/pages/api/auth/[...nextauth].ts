@@ -41,6 +41,7 @@ export const options: NextAuthOptions = {
         headers: { 'Content-Type': 'application/json' },
       });
       const user = await res.json();
+        console.log("🚀 ~ file: [...nextauth].ts:44 ~ authorize ~ user:", user)
         
         if (user) {
           console.log("🚀 ~ file: [...nextauth].ts:46 ~ authorize ~ user:", user)
