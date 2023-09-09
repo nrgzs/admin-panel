@@ -5,7 +5,7 @@ export default function CategoryProducts (){
       <div>
         <h2>Category items</h2>
         <div>
-            <ItemCart/>
+            <ItemCart itemID={''}/>
         </div>
       </div>
     );

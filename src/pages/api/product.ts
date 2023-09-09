@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 const mongoose = require('mongoose');
 
 const productSchema = require('@/lib/models/productModel');
-const dbConnect = require('@/utils/connect.js');
+const dbConnect = require('@/utils/connect');
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {
   try {
