@@ -37,16 +37,7 @@ const AddProduct = () => {
     } catch (error) {
       console.error('Update failed:', error);
     }
-    // await axios.post(`http://localhost:3000/api/product`, {
-    //   title: title.current?.value,
-    //   description: description.current?.value,
-    //   category: category.current?.value,
-    //   price: price.current?.value,
-    //   rating: rating.current?.value,
-    //   brand: brand.current?.value,
-    //   stock: stock.current?.value,
-    //   img: img.current?.value,
-    // });
+   
   }
   return (
     <>

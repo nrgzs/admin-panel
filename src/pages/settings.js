@@ -4,6 +4,7 @@ import axios from 'axios';
 import AllUsers from '@/components/user/allUsers';
 
 
+
 const SettingsPage  = ({
   admins,
 }) => {
@@ -11,8 +12,8 @@ const SettingsPage  = ({
     <div>
       <h2>Settings PAGE</h2>;
       <SignComponent />
-      <AddUser />
-      <AllUsers />
+      <AddUser/>
+     <AllUsers/>
     </div>
   );
 };

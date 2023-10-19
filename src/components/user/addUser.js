@@ -1,19 +1,39 @@
 import { useRef } from 'react';
 import React from 'react';
 import axios from 'axios';
+import { useUpdateUserMutation } from '@/services/UserRTK';
 
 const AddUser = () => {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userPassword = useRef(null);
 
-  async function PostAdmin() {
-    await axios.post(`http://localhost:3000/api/auth/user`, {
-      name: userName.current?.value,
-      email: userEmail.current?.value,
-      password: userPassword.current?.value,
-    });
-  }
+  // async function PostAdmin() {
+  //   await axios.post(`http://localhost:3000/api/auth/user`, {
+  //     name: userName.current?.value,
+  //     email: userEmail.current?.value,
+  //     password: userPassword.current?.value,
+  //   });
+  // }
+
+   const [updateUser, { isLoading, isError }] = useUpdateUserMutation();
+
+   async function PostAdmin(e) {
+     e.preventDefault();
+
+     const updatedData = {
+       name: userName.current?.value,
+       email: userEmail.current?.value,
+       password: userPassword.current?.value,
+     };
+
+     try {
+       const response = await updateUser(updatedData).unwrap();
+       console.log('Update successful:', response);
+     } catch (error) {
+       console.error('Update failed:', error);
+     }
+   }
 
   return (
     <div className="flex flex-col justify-center items-center">
