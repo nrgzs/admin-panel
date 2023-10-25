@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+import { signJwtAccessToken } from '@/lib/jwt/jwt';
 import { NextApiRequest, NextApiResponse } from 'next';
 const mongoose = require('mongoose');
 
@@ -20,11 +21,27 @@ export default async function handler(
     console.log('🚀 ~ file: login.ts:20 ~ pass:', pass);
 
     if (user && pass) {
-      const userWithoutPass = Object.entries(user._doc).filter(
+      console.log("🚀 ~ file: login.js:24 ~ user:", user)
+      // const{password,...userWithoutPass}= user
+      const userWithoutPasswithD = Object.entries(user._doc).filter(
         (param) => param[0] != 'password'
       );
+      const userWithoutPass= Object.fromEntries(userWithoutPasswithD)
+console.log('🚀 ~ file: login.js:28 ~ userWithoutPass:', userWithoutPass);
 
-      res.status(200).json(Object.fromEntries(userWithoutPass));
+      // Object.fromEntries(userWithoutPass);
+      console.log('🚀 ~ file: login.js:28 ~ userWithoutPass:', userWithoutPass);
+
+const accessToken = signJwtAccessToken(userWithoutPass)
+
+const result = {
+
+  ...userWithoutPass,
+  accessToken
+}
+  console.log('🚀 ~ file: login.js:30 ~ result:', result);
+
+      res.status(200).json(result);
     } else {
       res.status(401).json(null);
     }
