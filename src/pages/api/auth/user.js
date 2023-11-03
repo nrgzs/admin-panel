@@ -11,6 +11,7 @@ export default async function handler(req, res) {
   try {
     await dbConnect();
     const body = req.body;
+    console.log("🚀 ~ file: user.js:14 ~ handler ~ body:", body)
     const method = req.method;
 
     const [user] = await Admin.find({ email: body.email });
@@ -26,6 +27,7 @@ export default async function handler(req, res) {
         const newUser = await Admin.create({
           name: body.name,
           email: body.email,
+          role: body.role,
           password: await bcrypt.hash(body.password, 10),
         });
 
@@ -48,10 +50,4 @@ console.log(id);
   }
 }
 
-/* create user and push it to the database
 
-for hashinf the pasword await bcrypt.hash(body.password,10)
-
-const {pasword,...result} = user
-return new Response(JSON.stringify(result))
- */

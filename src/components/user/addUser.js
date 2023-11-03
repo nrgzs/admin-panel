@@ -7,6 +7,7 @@ const AddUser = () => {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userPassword = useRef(null);
+   const userRole = useRef(null);
 
   // async function PostAdmin() {
   //   await axios.post(`http://localhost:3000/api/auth/user`, {
@@ -25,7 +26,10 @@ const AddUser = () => {
        name: userName.current?.value,
        email: userEmail.current?.value,
        password: userPassword.current?.value,
+       role: userRole.current?.value,
      };
+     console.log("🚀 ~ file: addUser.js:31 ~ PostAdmin ~ updatedData:", updatedData)
+    
 
      try {
        const response = await updateUser(updatedData).unwrap();
@@ -57,6 +61,12 @@ const AddUser = () => {
             className=" bg-slate-200 p-2 rounded  w-96 outline-none"
             ref={userPassword}
             placeholder="User Password"
+          ></input>
+          <input
+            type="role"
+            className=" bg-slate-200 p-2 rounded  w-96 outline-none"
+            ref={userRole}
+            placeholder="User Role"
           ></input>
           <button
             onClick={PostAdmin}

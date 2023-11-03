@@ -43,12 +43,12 @@ export const options = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-     console.log('callback'+ user);
-      return { ...token, ...user };
+      if (user) token.role = user.role;
+      return token;
     },
 
-    async session({ session, token,user }) {
-      session.user = token;
+    async session({ session, token, user }) {
+      session.user.role = token.role;
       return session;
     },
   },

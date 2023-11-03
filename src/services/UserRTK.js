@@ -11,6 +11,7 @@ export const UserRTK = BaseApi.injectEndpoints({
         url: `/auth/user`,
         method: 'POST',
         body: updatedData,
+        
       }),
       invalidatesTags: ['User'],
     }),
