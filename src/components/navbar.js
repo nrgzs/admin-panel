@@ -39,12 +39,12 @@ const Navbar = () => {
               <h2 className="hidden lg:block">Orders</h2>
             </li>
           </Link>
-          <Link href={'/users'}>
+          {/* <Link href={'/users'}>
             <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
               <Image alt="icon" src={users} width={40} height={40}></Image>
               <h2 className="hidden lg:block">Users</h2>
             </li>
-          </Link>
+          </Link> */}
           <Link href={'/settings'}>
             <li className="flex gap-2 justify-center items-center hover:bg-slate-200 rounded p-2">
               <Image alt="icon" src={setting} width={40} height={40}></Image>

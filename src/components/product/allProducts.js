@@ -26,9 +26,7 @@ const AllProducts = () => {
           })
         ) : null}
 
-        {/* {isSuccess ? data.map((item) => {
-          return <ItemCart key={item.title} item={item} />;
-        }):<p>loading..</p>} */}
+        
       </div>
     </div>
   );

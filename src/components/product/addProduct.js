@@ -17,28 +17,49 @@ const AddProduct = () => {
 
   const [updateProduct, { isLoading, isError }] = useUpdateProductMutation();
 
-  async function PostProduct(e) {
-    e.preventDefault();
+  // async function PostProduct(e) {
+  //   e.preventDefault();
 
-    const updatedData = {
-      title: title.current?.value,
-      description: description.current?.value,
-      category: category.current?.value,
-      price: price.current?.value,
-      rating: rating.current?.value,
-      brand: brand.current?.value,
-      quantityInStock: stock.current?.value,
-      imageUrl: img.current?.value,
-    };
+  //   const updatedData = {
+  //     title: title.current?.value,
+  //     description: description.current?.value,
+  //     category: category.current?.value,
+  //     price: price.current?.value,
+  //     rating: rating.current?.value,
+  //     brand: brand.current?.value,
+  //     quantityInStock: stock.current?.value,
+  //     imageUrl: img.current?.value,
+  //   };
 
-    try {
-      const response = await updateProduct(updatedData).unwrap();
-      console.log('Update successful:', response);
-    } catch (error) {
-      console.error('Update failed:', error);
-    }
+  //   try {
+  //     const response = await updateProduct(updatedData).unwrap();
+  //     console.log('Update successful:', response);
+  //   } catch (error) {
+  //     console.error('Update failed:', error);
+  //   }
    
-  }
+  // }
+   async function PostProduct(e) {
+     e.preventDefault();
+
+     // Create a new FormData object to handle the file upload
+     const formData = new FormData();
+     formData.append('title', title.current.value);
+     formData.append('description', description.current.value);
+     formData.append('category', category.current.value);
+     formData.append('price', price.current.value);
+     formData.append('rating', rating.current.value);
+     formData.append('brand', brand.current.value);
+     formData.append('quantityInStock', stock.current.value);
+     formData.append('image', img.current.files[0]); // Use img.current.files[0] to access the selected file
+
+     try {
+       const response = await updateProduct(formData).unwrap();
+       console.log('Update successful:', response);
+     } catch (error) {
+       console.error('Update failed:', error);
+     }
+   }
   return (
     <>
       <div className="flex flex-col justify-center items-center">

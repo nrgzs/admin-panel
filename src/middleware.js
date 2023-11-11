@@ -11,7 +11,7 @@ export default withAuth(
         req.nextUrl.pathname.startsWith('/settings') &&
         req.nextauth.token?.role !== 'Admin'
       ) {
-        return NextResponse.rewrite(new URL('/', req.url));
+        return NextResponse.rewrite(new URL('/notAuthorized', req.url));
       }
   },
   { 
@@ -21,5 +21,6 @@ export default withAuth(
   }
 )
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)','/settings'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)', '/settings'],
+ 
 };
