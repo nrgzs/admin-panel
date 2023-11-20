@@ -55,13 +55,18 @@ export default async function handler(req, res) {
 
         const [product] = await productSchema.find({ title: body.title });
         console.log('🚀 ~ file: product.ts:29 ~ product:', product);
+                  console.log(
+                    '🚀 ~ file: product.js:61 ~ upload.single ~ req.file.path:',
+                    req.file.path
+                  );
+
         if (product) {
           console.log(`there is already a product in this title ${product.id}`);
           fs.unlinkSync(req.file.path);
           return res.status(400).json({ error: 'Product already exists' });
         }
 
-        const imagePath = `/public/uploads/${req.file.filename}`;
+        const imagePath = `/uploads/${req.file.filename}`;
 
         const newProduct = await productSchema.create({
           title: body.title,
@@ -78,9 +83,11 @@ export default async function handler(req, res) {
       });
     } else if (method === 'DELETE') {
       const id = req.query.ID;
-      const test = await productSchema
-        .find({ _id: new BSON.ObjectId(id) })
-        .deleteOne();
+      const [item ]= await productSchema.find({ _id: new BSON.ObjectId(id) });
+
+      await productSchema.find({ _id: new BSON.ObjectId(id) }).deleteOne();
+      fs.unlinkSync(`public${item.imageUrl}`);
+      console.log("🚀 ~ file: product.js:85 ~ handler ~ item.imageUrl:", item)
 
       res.json({ success: true });
     } else if (method === 'PUT') {

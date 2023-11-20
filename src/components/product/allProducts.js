@@ -14,7 +14,7 @@ const AllProducts = () => {
   return (
     <div className="flex flex-col  items-center">
       <h2 className="font-bold">All products</h2>
-      <SearchBar />
+      <SearchBar data={data?.allProducts}/>
       <div className="flex flex-col  items-center">
         {error ? (
           <>Oh no, there was an error</>

@@ -31,6 +31,11 @@ const closeModal = () => {
         <h2 className="font-bold">{item.title}</h2>
 
         <p>{item.brand}</p>
+        <Image
+          src={`${item.imageUrl}`}
+          width={200}
+          height={200}
+        ></Image>
         <p>
           price: <span>{item.price}$</span>
         </p>
